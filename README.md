@@ -1,6 +1,9 @@
 # NullAudio-input
 Audio driver based on Apple's NullAudio example project that creates a virtual device with 2 channels of input only (virtual mic).
 
+Original readme:
+
+-----------------------------------------------------------------------------------
 ## Creating an Audio Server Driver Plug-in
 Build a virtual audio device by creating a custom driver plug-in.
 
