@@ -5,10 +5,10 @@ Abstract:
 Localized strings displayed by the device.
 */
 
-DeviceName = "Null Audio Device";
-InputStreamName = "Null Audio Input Stream";
+DeviceName = "NullAudio Device";
+InputStreamName = "Null Audio input stream";
 OutputStreamName = "Null Audio Output Stream";
-ManufacturerName = "Apple Inc.";
+ManufacturerName = "AdeCorp";
 MasterElementName = "Master";
 LeftElementName = "Left";
 RightElementName = "Right";

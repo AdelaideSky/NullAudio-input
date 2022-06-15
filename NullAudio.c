@@ -141,7 +141,7 @@ static Boolean								gBox_Acquired					= true;
 #define										kDevice_UID						"NullAudioDevice_UID"
 #define										kDevice_ModelUID				"NullAudioDevice_ModelUID"
 static pthread_mutex_t						gDevice_IOMutex					= PTHREAD_MUTEX_INITIALIZER;
-static Float64								gDevice_SampleRate				= 44100.0;
+static Float64								gDevice_SampleRate				= 48000.0;
 static UInt64								gDevice_IOIsRunning				= 0;
 static const UInt32							kDevice_RingBufferSize			= 16384;
 static Float64								gDevice_HostTicksPerFrame		= 0.0;
@@ -1824,8 +1824,8 @@ static Boolean	NullAudio_HasDeviceProperty(AudioServerPlugInDriverRef inDriver, 
 		case kAudioDevicePropertyLatency:
 		case kAudioDevicePropertySafetyOffset:
 		case kAudioDevicePropertyPreferredChannelsForStereo:
-		case kAudioDevicePropertyPreferredChannelLayout:
-			theAnswer = (inAddress->mScope == kAudioObjectPropertyScopeInput) || (inAddress->mScope == kAudioObjectPropertyScopeOutput);
+        case kAudioDevicePropertyPreferredChannelLayout:
+              theAnswer = inAddress->mScope == kAudioObjectPropertyScopeInput;
 			break;
 		
 		case kAudioObjectPropertyElementName:
@@ -2005,7 +2005,7 @@ static OSStatus	NullAudio_GetDevicePropertyDataSize(AudioServerPlugInDriverRef i
 			switch(inAddress->mScope)
 			{
 				case kAudioObjectPropertyScopeGlobal:
-					*outDataSize = 2 * sizeof(AudioObjectID);
+					*outDataSize = 1 * sizeof(AudioObjectID);
 					break;
 					
 				case kAudioObjectPropertyScopeInput:
@@ -2013,7 +2013,7 @@ static OSStatus	NullAudio_GetDevicePropertyDataSize(AudioServerPlugInDriverRef i
 					break;
 					
 				case kAudioObjectPropertyScopeOutput:
-					*outDataSize = 1 * sizeof(AudioObjectID);
+					*outDataSize = 0 * sizeof(AudioObjectID);
 					break;
 			};
 			break;
